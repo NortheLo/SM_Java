@@ -8,14 +8,12 @@ import java.net.URLConnection;
 public class Document{
 
     public String getDocument(String target){
-        String output = new String();
+        //String output = new String();
+        char[] output = new char[1000];
         try{
             URL url = new URL(target);
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"))) {
-                for (String line; (line = reader.readLine()) != null;) {
-                    output += "\n" + line;
-                    //System.out.println(line);
-                }
+                reader.read(output);
             }
             catch(Exception e){
                 e.printStackTrace();
@@ -33,6 +31,6 @@ public class Document{
         catch(Exception e){
             e.printStackTrace();
         }*/
-        return output;
+        return new String(output);
     }
 }
