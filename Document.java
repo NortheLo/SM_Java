@@ -18,11 +18,9 @@ public class Document{
             catch(Exception e){
                 e.printStackTrace();
             }
-
         }catch(MalformedURLException s){
             s.printStackTrace();
         }
-
         return new String(output);
     }
 }
