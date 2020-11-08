@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Vector;
+import java.util.regex.Pattern;
 
 public class Parser {
 
@@ -23,26 +24,22 @@ public class Parser {
         try {
             Vector<Integer> startLines = new Vector<Integer>();
             Vector<Integer> endLines = new Vector<Integer>();
-            Vector<Integer> startComment = new Vector<Integer>();
-            Vector<Integer> endComment = new Vector<Integer>();
             Vector<Integer> Beschreibung = new Vector<Integer>();
             Vector<Integer> Datum = new Vector<Integer>();
             Vector<Integer> Uhrzeit = new Vector<Integer>();
-
+            text = text.replaceAll("(?s)/\\*([^*]|[\\r\\n]|(\\*([^/]|[\\r\\n])))*\\*/","");
             startLines = findAll("{", text);
             endLines = findAll("}", text);
-            // startComment = findAll("/*", text);
-            // endComment = findAll("*/", text);
             Beschreibung = findAll("Beschreibung", text);
             Datum = findAll("Datum", text);
             Uhrzeit = findAll("Uhrzeit", text);
-            // text.replaceAll("\\/\\*[\\s\\S]*?\\*\\/|(['\"])[\\s\\S]+?\\1(*SKIP)(*FAIL)|\\/{2}.*",
-            // "");
+            
+            
             for (int i = 0; i < startLines.size(); ++i) {
                 Termin termin = new Termin();
                 int x = Beschreibung.size();
                 if (Beschreibung.size() > i && startLines.elementAt(i) < Beschreibung.elementAt(i) && Beschreibung.elementAt(i) < endLines.elementAt(i)) {
-                    termin.Beschreibung = text.substring(Beschreibung.elementAt(i),text.indexOf("\n", Beschreibung.elementAt(i)));
+                    termin.Beschreibung = text.substring(Beschreibung.elementAt(i),text.indexOf("}", Beschreibung.elementAt(i)));
                 }
                 if (Datum.size() > i && startLines.elementAt(i) < Datum.elementAt(i) && Datum.elementAt(i) < endLines.elementAt(i)) {
                     termin.Datum = text.substring(Datum.elementAt(i), text.indexOf("\n", Datum.elementAt(i)));
