@@ -23,6 +23,6 @@ public class Document{
             s.printStackTrace();
         }
 
-        return output;
+        return new String(output);
     }
 }
