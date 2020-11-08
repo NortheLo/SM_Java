@@ -40,15 +40,14 @@ public class Parser {
             // "");
             for (int i = 0; i < startLines.size(); ++i) {
                 Termin termin = new Termin();
-                if (startLines.elementAt(i) < Beschreibung.elementAt(i)
-                        && Beschreibung.elementAt(i) < endLines.elementAt(i)) {
-                    termin.Beschreibung = text.substring(Beschreibung.elementAt(i),
-                            text.indexOf("\n", Beschreibung.elementAt(i)));
+                int x = Beschreibung.size();
+                if (Beschreibung.size() > i && startLines.elementAt(i) < Beschreibung.elementAt(i) && Beschreibung.elementAt(i) < endLines.elementAt(i)) {
+                    termin.Beschreibung = text.substring(Beschreibung.elementAt(i),text.indexOf("\n", Beschreibung.elementAt(i)));
                 }
-                if (startLines.elementAt(i) < Datum.elementAt(i) && Datum.elementAt(i) < endLines.elementAt(i)) {
+                if (Datum.size() > i && startLines.elementAt(i) < Datum.elementAt(i) && Datum.elementAt(i) < endLines.elementAt(i)) {
                     termin.Datum = text.substring(Datum.elementAt(i), text.indexOf("\n", Datum.elementAt(i)));
                 }
-                if (startLines.elementAt(i) < Uhrzeit.elementAt(i) && Uhrzeit.elementAt(i) < endLines.elementAt(i)) {
+                if (Uhrzeit.size() > i && startLines.elementAt(i) < Uhrzeit.elementAt(i) && Uhrzeit.elementAt(i) < endLines.elementAt(i)) {
                     termin.Uhrzeit = text.substring(Uhrzeit.elementAt(i), text.indexOf("\n", Uhrzeit.elementAt(i)));
                 }
                 termine.add(termin);
