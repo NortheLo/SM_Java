@@ -1,0 +1,15 @@
+/*test123*/
+{
+    Beschreibung:testTermin
+    Datum:1.12.2004
+    Uhrzeit:12:20
+}
+asdasdasdasdsad
+
+/*test123*/
+{
+    Beschreibung:andererTermin
+    Datum:1.12.2005
+    Uhrzeit:12:40
+}
+asdasdasdasdsad
