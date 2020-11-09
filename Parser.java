@@ -7,6 +7,7 @@ public class Parser {
     final String key_Beschreibung = "Beschreibung";
     final String key_Datum = "Datum";
     final String key_Uhrzeit = "Uhrzeit";
+    final String key_Titel = "Titel";
 
     public Vector<Integer> findAll(String pattern, String data) {
         Vector<Integer> result = new Vector<Integer>();
@@ -31,13 +32,16 @@ public class Parser {
             Vector<Integer> Beschreibung = new Vector<Integer>();
             Vector<Integer> Datum = new Vector<Integer>();
             Vector<Integer> Uhrzeit = new Vector<Integer>();
+            Vector<Integer> Titel = new Vector<Integer>();
+
             text = text.replaceAll("(?s)/\\*([^*]|[\\r\\n]|(\\*([^/]|[\\r\\n])))*\\*/","");
+
             startLines = findAll("{", text);
             endLines = findAll("}", text);
             Beschreibung = findAll(key_Beschreibung, text);
             Datum = findAll(key_Datum, text);
             Uhrzeit = findAll(key_Uhrzeit, text);
-            
+            Titel = findAll(key_Titel, text);
             
             for (int i = 0; i < startLines.size(); ++i) {
                 Termin termin = new Termin();
@@ -49,6 +53,9 @@ public class Parser {
                 }
                 if (Uhrzeit.size() > i && startLines.elementAt(i) < Uhrzeit.elementAt(i) && Uhrzeit.elementAt(i) < endLines.elementAt(i)) {
                     termin.Uhrzeit = text.substring(Uhrzeit.elementAt(i)+key_Uhrzeit.length()+1, text.indexOf("\n", Uhrzeit.elementAt(i))).trim();
+                }
+                if (Titel.size() > i && startLines.elementAt(i) < Titel.elementAt(i) && Titel.elementAt(i) < endLines.elementAt(i)) {
+                    termin.Titel = text.substring(Titel.elementAt(i)+key_Titel.length()+1, text.indexOf("\n", Titel.elementAt(i))).trim();
                 }
                 termine.add(termin);
             }

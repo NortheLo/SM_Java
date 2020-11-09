@@ -40,9 +40,9 @@ public class Main extends Application {
         Vector<Termin> termine = parser.parse(document.getDocument(target)); 
         System.out.println(termine.elementAt(0).Beschreibung);  
         for(int i = 0;i < termine.size();++i){
-            ControllerHandle.listView1.getItems().add(termine.elementAt(i).Datum);
+            ControllerHandle.listView1.getItems().add(termine.elementAt(i).Titel + " -- " + termine.elementAt(i).Datum);
         }
-        
+        //todo, sort Items
     }
 
 }
