@@ -4,12 +4,16 @@ import java.util.Vector;
 import java.util.regex.Pattern;
 
 public class Parser {
+    final String key_Beschreibung = "Beschreibung";
+    final String key_Datum = "Datum";
+    final String key_Uhrzeit = "Uhrzeit";
 
     public Vector<Integer> findAll(String pattern, String data) {
         Vector<Integer> result = new Vector<Integer>();
         int index = 0;
         while (index != -1) {
             index = data.indexOf(pattern, ++index);
+            
             if (index == -1) {
                 break;
             } else {
@@ -30,22 +34,21 @@ public class Parser {
             text = text.replaceAll("(?s)/\\*([^*]|[\\r\\n]|(\\*([^/]|[\\r\\n])))*\\*/","");
             startLines = findAll("{", text);
             endLines = findAll("}", text);
-            Beschreibung = findAll("Beschreibung", text);
-            Datum = findAll("Datum", text);
-            Uhrzeit = findAll("Uhrzeit", text);
+            Beschreibung = findAll(key_Beschreibung, text);
+            Datum = findAll(key_Datum, text);
+            Uhrzeit = findAll(key_Uhrzeit, text);
             
             
             for (int i = 0; i < startLines.size(); ++i) {
                 Termin termin = new Termin();
-                int x = Beschreibung.size();
                 if (Beschreibung.size() > i && startLines.elementAt(i) < Beschreibung.elementAt(i) && Beschreibung.elementAt(i) < endLines.elementAt(i)) {
-                    termin.Beschreibung = text.substring(Beschreibung.elementAt(i),text.indexOf("}", Beschreibung.elementAt(i)));
+                    termin.Beschreibung = text.substring(Beschreibung.elementAt(i)+key_Beschreibung.length()+1,text.indexOf("}", Beschreibung.elementAt(i))).trim();
                 }
                 if (Datum.size() > i && startLines.elementAt(i) < Datum.elementAt(i) && Datum.elementAt(i) < endLines.elementAt(i)) {
-                    termin.Datum = text.substring(Datum.elementAt(i), text.indexOf("\n", Datum.elementAt(i)));
+                    termin.Datum = text.substring(Datum.elementAt(i)+key_Datum.length()+1, text.indexOf("\n", Datum.elementAt(i))).trim();
                 }
                 if (Uhrzeit.size() > i && startLines.elementAt(i) < Uhrzeit.elementAt(i) && Uhrzeit.elementAt(i) < endLines.elementAt(i)) {
-                    termin.Uhrzeit = text.substring(Uhrzeit.elementAt(i), text.indexOf("\n", Uhrzeit.elementAt(i)));
+                    termin.Uhrzeit = text.substring(Uhrzeit.elementAt(i)+key_Uhrzeit.length()+1, text.indexOf("\n", Uhrzeit.elementAt(i))).trim();
                 }
                 termine.add(termin);
             }

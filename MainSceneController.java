@@ -8,7 +8,7 @@ public class MainSceneController {
     private Button button1;
 
     @FXML
-    private ListView listView1;
+    public ListView listView1;
 
     @FXML
     private void buttonClicked() {
