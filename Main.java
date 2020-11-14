@@ -34,9 +34,9 @@ public class Main extends Application {
         File file = new File("C://Users/jonas/Documents/SM_Java/sample.txt");
 
         Document document = new Document(); 
-        System.out.println("Hello World");
+        //System.out.println("Document found!\n");
         Parser parser = new Parser();
-        System.out.println("test");
+        //System.out.println("Parsing done!\n");
         Vector<Termin> termine = parser.parse(document.getDocument(target)); 
         System.out.println(termine.elementAt(0).Beschreibung);  
         for(int i = 0;i < termine.size();++i){

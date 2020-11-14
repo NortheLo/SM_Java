@@ -7,7 +7,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="listView1" layoutX="110.0" layoutY="43.0" prefHeight="200.0" prefWidth="380.0" />
-      <Button fx:id="button1" layoutX="203.0" layoutY="276.0" mnemonicParsing="false" onAction="#buttonClicked" text="Button" />
+      <Label fx:id="label1" layoutX="200.0" layoutY="10.0" text="Found Entries:"/>
+      <ListView fx:id="listView1" layoutX="110.0" layoutY="40.0" prefHeight="200.0" prefWidth="380.0" />
+      <Button fx:id="addbutton" layoutX="500.0" layoutY="75.0" mnemonicParsing="false" onAction="#addClicked" text="+" />
+      <Button fx:id="sendbutton" layoutX="200.0" layoutY="275.0" mnemonicParsing="false" onAction="#sendClicked" text="Send mail" />
+      <Button fx:id="removebutton" layoutX="500.0" layoutY="125.0" mnemonicParsing="false" onAction="#removeClicked" text="-" />
    </children>
 </Pane>
