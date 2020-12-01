@@ -29,6 +29,7 @@ public class MainSceneController {
     @FXML
     private void sendClicked(){
         sendbutton.setText("Mail has been sent!");
+        Mail.doIt();
         //call method to send mail
     }
     @FXML
