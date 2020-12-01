@@ -24,6 +24,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         ControllerHandle = (MainSceneController) loader.getController();
+        primaryStage.setTitle("SM Java Projekt");      //Name des Fenster noch verbessern
         primaryStage.show();
         run();
     }

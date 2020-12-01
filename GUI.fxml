@@ -12,5 +12,6 @@
       <Button fx:id="addbutton" layoutX="500.0" layoutY="75.0" mnemonicParsing="false" onAction="#addClicked" text="+" />
       <Button fx:id="sendbutton" layoutX="200.0" layoutY="275.0" mnemonicParsing="false" onAction="#sendClicked" text="Send mail" />
       <Button fx:id="removebutton" layoutX="500.0" layoutY="125.0" mnemonicParsing="false" onAction="#removeClicked" text="-" />
+
    </children>
 </Pane>
