@@ -18,12 +18,8 @@ public class MainSceneController {
     private TextField field_date;
     @FXML
     private TextField field_description;
-
     @FXML
     public ListView listView1;
-
-    @FXML
-    private TextField inputfield;
 
     @FXML
     private void addEntry() {
@@ -62,22 +58,8 @@ public class MainSceneController {
         mailContent += "\n\nMfg,\ndas BotBoot";
         System.out.println(mailContent);
         sendbutton.setText("Mail has been sent!");
-        Mail.sendEmail("jonas.woerner@online.de", "nice", mailContent);
+        Mail mail = new Mail();
+        mail.sendEmail("jonas.woerner@online.de", "nice", mailContent);
         // call method to send mail
-    }
-
-    @FXML
-    private void removeClicked() {
-        listView1.getItems().remove("Item 1");
-    }
-
-    @FXML
-    private String getField() {
-        String newdate = inputfield.getText();
-        return newdate;
-        // <TextField fx:id="inputfield" layoutX="700.0" layoutY="125.0"
-        // mnemonicParsing="false" onAction="#getField" text="Enter the name of the new
-        // entry"/>
-
     }
 }

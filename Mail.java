@@ -11,21 +11,11 @@ import javax.mail.internet.MimeMessage;
 
 
 public class Mail{
-    private String AdressFrom, AdressTo, host;
     
-    public Mail(String newsender, String newreceiver, String newhost){
-        AdressFrom = newsender;
-        AdressTo = newreceiver;
-        host = newhost;
-    }
+    public Mail(){
 
-    public String prepareMail(String Mail_ipt){
-        String Mailcontent = "Liebe Platzhalter,\nhier ist unsere wöchentliche Mail mit allen Termine und dazugehörigen Informationen ";
-        Mailcontent += Mail_ipt;
-        return Mailcontent;
     }
-    
-    public static void sendEmail( String toEmail, String subject, String body){
+    public void sendEmail( String toEmail, String subject, String body){
 		
 		
 		final String fromEmail = "botboot1@web.de"; //requires valid gmail id

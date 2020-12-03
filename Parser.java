@@ -10,7 +10,7 @@ public class Parser {
     final String key_Titel = "Titel";
     static Vector<Termin> termine = new Vector<Termin>();
 
-    public Vector<Integer> findAll(String pattern, String data) {
+    private Vector<Integer> findAll(String pattern, String data) {
         Vector<Integer> result = new Vector<Integer>();
         int index = 0;
         while (index != -1) {
