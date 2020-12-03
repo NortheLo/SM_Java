@@ -8,6 +8,7 @@ public class Parser {
     final String key_Datum = "Datum";
     final String key_Uhrzeit = "Uhrzeit";
     final String key_Titel = "Titel";
+    static Vector<Termin> termine = new Vector<Termin>();
 
     public Vector<Integer> findAll(String pattern, String data) {
         Vector<Integer> result = new Vector<Integer>();

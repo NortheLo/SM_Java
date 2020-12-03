@@ -33,15 +33,14 @@ public class Main extends Application {
     {
         String target = "https://yopad.eu/p/JavaProjektTestTermine-365days/export/txt";
         File file = new File("C://Users/jonas/Documents/SM_Java/sample.txt");
-
         Document document = new Document(); 
         //System.out.println("Document found!\n");
         Parser parser = new Parser();
         //System.out.println("Parsing done!\n");
-        Vector<Termin> termine = parser.parse(document.getDocument(target)); 
-        System.out.println(termine.elementAt(0).Beschreibung);  
-        for(int i = 0;i < termine.size();++i){
-            ControllerHandle.listView1.getItems().add(termine.elementAt(i).Titel + " -- " + termine.elementAt(i).Datum);
+        Parser.termine = parser.parse(document.getDocument(target)); 
+        System.out.println(Parser.termine.elementAt(0).Beschreibung);  
+        for(int i = 0;i < Parser.termine.size();++i){
+            ControllerHandle.listView1.getItems().add(Parser.termine.elementAt(i).Titel + " -- " + Parser.termine.elementAt(i).Datum);
         }
         //todo, sort Items
     }

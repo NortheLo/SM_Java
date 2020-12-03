@@ -25,7 +25,32 @@ public class Mail{
         return Mailcontent;
     }
     
-    public static void sendEmail(Session session, String toEmail, String subject, String body){
+    public static void sendEmail( String toEmail, String subject, String body){
+		
+		
+		final String fromEmail = "botboot1@web.de"; //requires valid gmail id
+		final String password = "botboot1"; // correct password for gmail id
+		
+		System.out.println("SSLEmail Start");
+		Properties props = new Properties();
+		
+		props.put("mail.smtp.host", "smtp.web.de"); //SMTP Host
+		props.put("mail.smtp.socketFactory.port", "465"); //SSL Port
+		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory"); //SSL Factory Class
+		props.put("mail.smtp.starttls.enable", "true");		
+		props.put("mail.smtp.auth", "true"); //Enabling SMTP Authentication
+		props.put("mail.smtp.port", "587"); //SMTP Port
+		
+		Authenticator auth = new Authenticator() {
+			//override the getPasswordAuthentication method
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(fromEmail, password);
+			}
+		};
+		
+		Session session = Session.getDefaultInstance(props, auth);
+		System.out.println("Session created");
+		
 		try
 	    {
 	      MimeMessage msg = new MimeMessage(session);
@@ -34,9 +59,9 @@ public class Mail{
 	      msg.addHeader("format", "flowed");
 	      msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-	      msg.setFrom(new InternetAddress("no_reply@example.com", "NoReply-JD"));
+	      msg.setFrom(new InternetAddress("botboot1@web.de", "BotBoot"));
 
-	      msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
+	      msg.setReplyTo(InternetAddress.parse("botboot1@web.de", false));
 
 	      msg.setSubject(subject, "UTF-8");
 
@@ -54,34 +79,4 @@ public class Mail{
 	      e.printStackTrace();
 	    }
     }
-    
-    public static void doIt(){
-        
-        final String fromEmail = "jo161woe"; //requires valid gmail id
-		final String password = "Vodafone1"; // correct password for gmail id
-		final String toEmail = "BefreiendLebendigerSeehund@grugrug.ru"; // can be any email id 
-		
-		System.out.println("SSLEmail Start");
-		Properties props = new Properties();
-		
-		props.put("mail.smtp.host", "asmtp.htwg-konstanz.de"); //SMTP Host
-		props.put("mail.smtp.socketFactory.port", "465"); //SSL Port
-		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory"); //SSL Factory Class
-		props.put("mail.smtp.starttls.enable", "true");		
-		props.put("mail.smtp.auth", "true"); //Enabling SMTP Authentication
-		props.put("mail.smtp.port", "587"); //SMTP Port
-		
-		Authenticator auth = new Authenticator() {
-			//override the getPasswordAuthentication method
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(fromEmail, password);
-			}
-		};
-		
-		Session session = Session.getDefaultInstance(props, auth);
-		System.out.println("Session created");
-	    sendEmail(session, toEmail,"SSLEmail Testing Subject", "SSLEmail Testing Body");
-
-	}
-    
 }
