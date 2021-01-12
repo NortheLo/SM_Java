@@ -24,7 +24,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         ControllerHandle = (MainSceneController) loader.getController();
-        primaryStage.setTitle("SM Java Projekt");      //Name des Fenster noch verbessern
+        primaryStage.setTitle("SM Java Projekt");
         primaryStage.show();
         run();
     }
@@ -32,17 +32,15 @@ public class Main extends Application {
     public void run()
     {
         String target = "https://yopad.eu/p/JavaProjektTestTermine-365days/export/txt";
-        File file = new File("C://Users/jonas/Documents/SM_Java/sample.txt");
         Document document = new Document(); 
-        //System.out.println("Document found!\n");
+        System.out.println("Document found!\n");
         Parser parser = new Parser();
-        //System.out.println("Parsing done!\n");
+        System.out.println("Parsing done!\n");
         Parser.termine = parser.parse(document.getDocument(target)); 
         System.out.println(Parser.termine.elementAt(0).Beschreibung);  
         for(int i = 0;i < Parser.termine.size();++i){
             ControllerHandle.listView1.getItems().add(Parser.termine.elementAt(i).Titel + " -- " + Parser.termine.elementAt(i).Datum);
         }
-        //todo, sort Items
     }
 
 }

@@ -35,7 +35,7 @@ public class Parser {
             Vector<Integer> Uhrzeit = new Vector<Integer>();
             Vector<Integer> Titel = new Vector<Integer>();
 
-            text = text.replaceAll("(?s)/\\*([^*]|[\\r\\n]|(\\*([^/]|[\\r\\n])))*\\*/","");
+            text = text.replaceAll("(?s)/\\*([^*]|[\\r\\n]|(\\*([^/]|[\\r\\n])))*\\*/",""); //remove comments
 
             startLines = findAll("{", text);
             endLines = findAll("}", text);

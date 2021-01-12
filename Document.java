@@ -8,7 +8,6 @@ import java.net.URLConnection;
 public class Document{
 
     public String getDocument(String target){
-        //String output = new String();
         char[] output = new char[1000];
         try{
             URL url = new URL(target);

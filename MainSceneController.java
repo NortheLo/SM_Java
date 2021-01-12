@@ -59,7 +59,6 @@ public class MainSceneController {
         System.out.println(mailContent);
         sendbutton.setText("Mail has been sent!");
         Mail mail = new Mail();
-        mail.sendEmail("jonas.woerner@online.de", "nice", mailContent);
-        // call method to send mail
+        mail.sendEmail("jonas.woerner@online.de", "test", mailContent);
     }
 }
